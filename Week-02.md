@@ -1,6 +1,4 @@
-# การทดลองที่ 2
-
-## Introduction to team work with repository
+# การทดลองที่ 2 Introduction to team work with repository
 
 ## กล่าวนำ
 

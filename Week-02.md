@@ -1,36 +1,35 @@
-# การทดลองที่ 2 
-# Introduction to team work with repository
+# การทดลองที่ 2 Introduction to team work with repository
+
 ## กล่าวนำ
+
 ### __1.1  ทบทวนความรู้จากครั้งที่แล้ว__
+
 ในระบบการทำงานของ git ที่เครื่องของนักพัฒนานั้น จะมีพื้นที่เก็บไฟล์ 3 ส่วนด้วยกันคือ `Working directory`, `staging area` และ `Local repository`
- 	
-ไฟล์ต่างๆ ที่เป็นโปรเจคของเรา จะอยู่ใน working directory สามารถเรียกดูได้โดยการใช้คำสั่ง ls, dir หรือเรียกดูได้โดยการใช้ file browser 
+  
+ไฟล์ต่างๆ ที่เป็นโปรเจคของเรา จะอยู่ใน working directory สามารถเรียกดูได้โดยการใช้คำสั่ง ls, dir หรือเรียกดูได้โดยการใช้ file browser
 
 ส่วนของ Local repository จะอยู่ใน directory ที่ชื่อว่า .git  และถูกซ่อนไว้จากการเรียกดูไฟล์โดย วิธีการปกติ  แต่อาจเรียกดูได้จากคำสั่ง ls -al หรือการแก้ไข properties ให้ file browser สามารถมองเห็นไฟล์ที่ซ่อนไว้ เนื้อหาในส่วนนี้ git จะมีวิธีการบริหารจัดการในลักษณะฐานข้อมูล และไม่สามารถใช้วิธีการปกติในการเปิดอ่านไฟล์ได้  
 
 ส่วนที่เหลืออีกอย่างหนึ่งคือ staging เป็นส่วนที่ระบบ git ใช้เปรียบเทียบความแตกต่าง ระหว่างไฟล์ใน working dorectory กับข้อมูลที่เก็บใน database เพื่อติดตามการเปลี่ยนแปลงของไฟล์ทั้งหมดที่ถูก track เราสามารถตรวจสอบสถานะได้จากการใช้คำสั่ง  git status  
- 
 
 <p align="center">  <img src="./images/fig 2-1.png"> </p>
 <p align="center"> <b> รูปที่ 2-1 </b> การทำงานในส่วนต่างๆ ของ git บนเครื่อง local computer</p>
-
 
 ### __1.2 สิ่งที่ควรรู้จักก่อนทำงานเป็นทีมบน git__
 
 __`git branch`__
 
-Git branch เป็นคำสั่งที่ทำหน้าที่ แสดง สร้าง หรือลบ branch ออกจาก repository โดยมีคำสั่งย่อยๆ ดังต่อไปนี้ 
+Git branch เป็นคำสั่งที่ทำหน้าที่ แสดง สร้าง หรือลบ branch ออกจาก repository โดยมีคำสั่งย่อยๆ ดังต่อไปนี้
 
-| รูปแบบคำสั่ง	| การทำงาน|
+| รูปแบบคำสั่ง | การทำงาน|
 |------------|---------|
-|git branch	| แสดง branch ทั้งหมด|
-|git branch `<branch>`	|สร้าง branch ใหม่ที่มีชื่อว่า  `<branch>`, โดยอ้างอิงจุดในอดีตตาม branch ปัจจุบัน|
-|git branch `<branch> <start-point>`	|สร้าง branch ใหม่ที่มีชื่อว่า  `<branch>`  โดยอ้างอิงจุดเริ่มต้นจาก `<start-point>` ที่ระบุในคำสั่ง ซึ่งอาจจะเป็น branch name หรือ tag name.|
-|git branch -d `<branch>`	|ลบ branch ที่ชื่อว่า `<branch>`|
-|git branch -D `<branch>`	|ลบ branch ที่ชื่อว่า  `<branch>` โดยไม่สนใจสถานะการ merged|
-|git checkout `<branch>`	|ย้าย branch มาอยู่ที่ `<branch>` พร้อมทั้งเปลี่ยนแปลงทุกอย่างที่อยู่ใน working directory ให้เป็นไปตาม `<branch>` ใน repository|
-|git checkout -b `<new> <start-point>` |	สร้าง branch ใหม่ที่ชื่อว่า `<new>` โดยอ้างอิงจุดเริ่มต้นเป็น `<start-point>` จากนั้นก็ทำการ checkout|
- 
+|git branch | แสดง branch ทั้งหมด|
+|git branch `<branch>` |สร้าง branch ใหม่ที่มีชื่อว่า  `<branch>`, โดยอ้างอิงจุดในอดีตตาม branch ปัจจุบัน|
+|git branch `<branch> <start-point>` |สร้าง branch ใหม่ที่มีชื่อว่า  `<branch>`  โดยอ้างอิงจุดเริ่มต้นจาก `<start-point>` ที่ระบุในคำสั่ง ซึ่งอาจจะเป็น branch name หรือ tag name.|
+|git branch -d `<branch>` |ลบ branch ที่ชื่อว่า `<branch>`|
+|git branch -D `<branch>` |ลบ branch ที่ชื่อว่า  `<branch>` โดยไม่สนใจสถานะการ merged|
+|git checkout `<branch>` |ย้าย branch มาอยู่ที่ `<branch>` พร้อมทั้งเปลี่ยนแปลงทุกอย่างที่อยู่ใน working directory ให้เป็นไปตาม `<branch>` ใน repository|
+|git checkout -b `<new> <start-point>` | สร้าง branch ใหม่ที่ชื่อว่า `<new>` โดยอ้างอิงจุดเริ่มต้นเป็น `<start-point>` จากนั้นก็ทำการ checkout|
 
 __`git merge`__
 
@@ -40,24 +39,22 @@ __แนวคิดในการทำ branch และ merge__
 
 การสร้าง branch ขึ้นมาเพื่อพัฒนา feature ใหม่ๆ (เช่น feature-1 ) จะช่วยให้เราสามารถพัฒนาได้อย่างอิสระ โดยที่ไม่ต้องกังวลว่าการ commit code จะไปรบกวนการทำงานของ code ใน master จากรูปที่ 2 จะพบว่าเราสามารถพัฒนา master ควบคู่กับการพัฒนา feature-1 ได้
 
- 
 <p align="center">  <img src="./images/fig 2-2.png"> </p>
 <p align="center"> <b> รูปที่ 2-2 </b> การพัฒนาโดยการแยก branch ออกมา  </p>
 
-เมื่อใดที่ทำการพัฒนา feature-1 เสร็จเรียบร้อยแล้ว เราสามารถนำกลับไปรวมกับ master ได้ทุกเวลา ดังรูปที่ 2-3 
+เมื่อใดที่ทำการพัฒนา feature-1 เสร็จเรียบร้อยแล้ว เราสามารถนำกลับไปรวมกับ master ได้ทุกเวลา ดังรูปที่ 2-3
 
- 
 <p align="center">  <img src="./images/fig 2-3.png"> </p>
 <p align="center"> <b> รูปที่ 2-3 </b> การรวม feature เข้ากับ master</p>
-	
+
 จากรูปที่ 2-3 พบว่าการ merge เกิดขึ้นที่  commit D โดยที่มี commit C เป็น parrent แรก และ G เป็น parrent ที่สอง  และต้องมั่นใจว่า branch ปัจจุบันเป็น branch ที่เราต้องการ merge เอา branch อื่นเข้ามา
-ในการทำงานร่วมกันบน repository มีสถานการณ์ (scenario) ที่สามารถเกิดขึ้นได้มากมาย มีวิธีการแก้ไข สถานการณ์ต่างๆ เหล่านั้น ซึ่งสามารถศึกษาเพิ่มเติมได้จากเอกสารอ้างอิงต่างๆ 
+ในการทำงานร่วมกันบน repository มีสถานการณ์ (scenario) ที่สามารถเกิดขึ้นได้มากมาย มีวิธีการแก้ไข สถานการณ์ต่างๆ เหล่านั้น ซึ่งสามารถศึกษาเพิ่มเติมได้จากเอกสารอ้างอิงต่างๆ
 
 ### 2. ขั้นตอนการทดลอง
 
 1. จับคู่การทดลอง ให้นักศึกษาคนแรก คือ __`S1`__ คนที่สองคือ __`S2`__  
 2. นักศึกษา __`S1`__ สร้าง Repository ชื่อ Sxxxxxxxx_Lab2 (xxxxxxxx คือรหัสนักศึกษาของตนเอง) ตัวอย่างดังรูปที่ 2-4
- 
+
 <p align="center">  <img src="./images/fig 2-4.png"> </p>
 <p align="center"> <b> รูปที่ 2-4 </b>  การสร้าง repo ใหม่</p>
 
@@ -65,47 +62,51 @@ __แนวคิดในการทำ branch และ merge__
 a. นักศึกษาที่เป็นคู่ปฏิบัติการทดลอง (__`S2`__)  
 b. ผศ.โกศล ตราชู  (koson trachu)  
 c. ผศ.สุระชัย พิมพ์สาลี (surachai-p)  
-โดยมีขั้นตอนการ invite สมาชิกเข้าร่วมการพัฒนา ดังนี้   
+โดยมีขั้นตอนการ invite สมาชิกเข้าร่วมการพัฒนา ดังนี้
 3.1 เลือกเมนู Settings  
 3.2 เลือกเมนู Collaborators  
 3.3 พิมพ์ username, full name หรืออีเมล์ของสมาชิกที่ต้องการเชิญเข้าร่วมการพัฒนา  
 3.4 กดปุ่ม Add collaborator
- 
+
 <p align="center">  <img src="./images/fig 2-5.png"> </p>
 <p align="center"> <b> รูปที่ 2-5 </b>  การเพิ่มผู้พัฒนาร่วมกันเข้าใช้ repo</p>
 
 หลังจากนั้นจะปรากฎผลลัพธ์ดังรูปที่ 6
- 
+
 <p align="center">  <img src="./images/fig 2-6.png"> </p>
 <p align="center"> <b> รูปที่ 2-6 </b> หน้าต่างแสดงรายชื่อผู้พัฒนาร่วมที่ถูกเชิญ  </p>
 
 4. หลังจากนั้นจะมีอีเมล์ส่งไปยังผู้ที่ถูกเชิญเข้าร่วมพัฒนา ให้ผู้ได้รับการเชิญ กดรับการเชิญที่ Accept Invitation  ดังรูปที่ 7
+<<<<<<< HEAD
  
 <p align="center">  <img src="./images/fig 2-7 .png"> </p>
+=======
+
+<p align="center">  <img src="./images/fig 2-7a.png"> </p>
+
+<p align="center">  <img src="./images/fig 2-7b.png"> </p>
+>>>>>>> e26e4d6797f49cec57e94c614b964d3522b3a2af
 <p align="center"> <b> รูปที่ 2.7 </b> การตอบรับการเชิญเข้าร่วมใช้งาน repo</p>
 
 5. __`S1`__ ทำการ clone repository ของตนเอง (ศึกษาคำสั่ง clone จากการทดลองที่ 1)
 6. __`S1`__ เปิด Notepad เพื่อสร้างไฟล์ชื่อ ietech.html ซึ่งมีข้อมูลดังนี้ (รูปที่ี 8 ใช้ Notepad++ เป็น editor)
 
- 
 <p align="center">  <img src="./images/fig 2-8.png"> </p>
 <p align="center"> <b> รูปที่ 2-8 </b> โค้ดไฟล์ ietech.html</p>
 
 6. __`S1`__ บันทึกไฟล์ไว้ที่ไดเรคทอรี่ ที่เก็บ repository ในเครื่อง (ใช้คำสั่ง pwd ใน git bash เพื่อดูตำแหน่ง folder) หลังจากนั้นทดสอบทำการทำงาน โดยเปิดไฟล์ ietech.html ด้วยเว็บบราวเซอร์ (chrome,firefox,ie) จะได้ผลลัพธ์ดังรูปที่ 2-9
 
- 
 <p align="center">  <img src="./images/fig 2-9.png"> </p>
 <p align="center"> <b> รูปที่ 2.9 </b> ผลลัพธ์การรันไฟล์ ietech.html ด้วยเว็บบราวเซอร์</p>
 
 7. __`S1`__ ทำการ Add ไฟล์เข้าไปยัง repository  ทำการ commit และ push ข้อมูลไว้บน gitHub (ดูวิธีการจากการทดลองที่ 1)
 8. __`S2`__ เปิดโปรแกรม git bash แล้วทำการ clone repository ที่ต้องการร่วมพัฒนากับคู่ปฏิบัติการทดลอง (repository ของ S1) ด้วยคำสั่ง `git clone` (ดูการใช้งานคำสั่ง git clone จากกการทดลองที่ 1)  
 9. เปลี่ยนไดเรคทอรี่ไปยัง directory ที่ทำการ clone ข้อมูลมา หลังจากนั้นให้ทำการตรวจสอบ repository จะเห็นไฟล์ต่างๆ ดังรูปที่ 2-10
- 
+
 <p align="center">  <img src="./images/fig 2-10.png"> </p>
 <p align="center"> <b> รูปที่ 2-10 </b> ผลลัพธ์การ Clone repo</p>
 
 10.  __`S2`__ สร้างหน้าเพจที่ต้องการเพิ่มเติมใน web site ในที่นี้ จะทำการเพิ่มหน้าเพจภาควิชาครุศาสตร์วิศวกรรม ตั้งชื่อไฟล์ `engedu.html` มี code และหน้าเพจดังรูปที่ 2-11  และ  2-12 ตามลำดับ (มีจุดที่พิมพ์ผิด ให้พิมพ์ผิด ตามรูปที่กำหนด)
- 
 <!-- 
 <p align="center">  <img src="./images/fig 2-11.png"> </p>
 <p align="center"> <b> รูปที่ 2-11 </b> โค้ดไฟล์ engedu.html</p>
@@ -126,9 +127,9 @@ c. ผศ.สุระชัย พิมพ์สาลี (surachai-p)
 </body>
 </html>
 ```
+
 <p align="center"> <b> รูปที่ 2-11 </b> โค้ดไฟล์ engedu.html</p>
 
- 
 <p align="center">  <img src="./images/fig 2-12.png"> </p>
 <p align="center"> <b> รูปที่ 2-12 </b> ผลลัพธ์การรันไฟล์ engedu.html ด้วยเว็บบราวเซอร์</p>
 
@@ -137,76 +138,72 @@ c. ผศ.สุระชัย พิมพ์สาลี (surachai-p)
 <p align="center">  <img src="./images/fig 2-13.png"> </p>
  <p align="center"> <b> รูปที่ 2-13 </b> การแก้ไขโค้ดในไฟล์ ietech.html</p>
 
-12. __`S2`__ ทดสอบเรียกหน้าเพจโดยการเรียกใน working directory จะพบว่ามีลิงค์ไปยังหน้าเพจเพิ่มขึ้นมาดังรูป 2-14 
- 
+12. __`S2`__ ทดสอบเรียกหน้าเพจโดยการเรียกใน working directory จะพบว่ามีลิงค์ไปยังหน้าเพจเพิ่มขึ้นมาดังรูป 2-14
+
 <p align="center">  <img src="./images/fig 2-14.png"> </p>
 <p align="center"> <b> รูปที่ 2-14 </b> ผลลัพธ์การรันไฟล์ engedu.html ด้วยเว็บบราวเซอร์</p>
 
 13. __`S2`__ เรียก git status พบว่า มีไฟล์ที่ถูกเปลี่ยนแปลงคือ ietech.html ดังรูปที่ 15
- 
+
 <p align="center">  <img src="./images/fig 2-15.png"> </p>
 <p align="center"> <b> รูปที่ 2-15 </b> การตรวจสอบสถานะการเปลี่ยนแปลงของไฟล์ใน working directory</p>
 
-14. __`S2`__ เพิ่มไฟล์ที่ถูกเปลี่ยนแปลง เข้าสู่พื้นที่ staging ของ git แล้ว commit ไปยัง Local repository 
- 
+14. __`S2`__ เพิ่มไฟล์ที่ถูกเปลี่ยนแปลง เข้าสู่พื้นที่ staging ของ git แล้ว commit ไปยัง Local repository
+
 <p align="center">  <img src="./images/fig 2-16.png"> </p>
 <p align="center"> <b> รูปที่ 2-16 </b> สถานะการเปลี่ยนแปลงของไฟล์ใน working directory หลังใช้คำสั่ง commit</p>
 
-15. __`S2`__ ทำการ push local repository ขึ้นไปบน server 
+15. __`S2`__ ทำการ push local repository ขึ้นไปบน server
 16. __`S1`__ แก้ไขไฟล์ ietech.html บน Local repository โดยแก้ไขชื่อคณะให้ถูกต้อง และบันทึกไฟล์ดังกล่าว
 17. __`S1`__ ทำการ pull repository เพื่อให้ Local repository ข้อมูลเป็นปัจจุบันเนื่องจาก __`S2`__ ได้ทำการ push ข้อมูลจาก Local repository ไปที่ gitHub แล้ว ทำการตรวจสอบข้อมูลที่อยู่บน gitHub เปลี่ยนแปลงเป็นข้อมูลปัจจุบันหรือไม่ ซึ่งขั้นตอนการ pull อาจจะมีผลลัพธ์แสดง ดังรูปที่ 2-17
- 
+
 <p align="center">  <img src="./images/fig 2-17.png"> </p>
-<p align="center"> <b> รูปที่ 2-17 </b> ผลการทำงานคำสั่ง git pull</p> 
+<p align="center"> <b> รูปที่ 2-17 </b> ผลการทำงานคำสั่ง git pull</p>
 
 18. __`S1`__ ทำการ push local repository ขึ้นไปบน server
 
 19. __`S2`__ ทำการแก้ไขไฟล์ ietech.html ใน Local repository โดยสร้าง Link ในชื่อคณะฯ ให้ Link ไปยังหน้าเว็บไซต์ของคณะ ดังรูปที่ 2-18
- 
+
 <p align="center">  <img src="./images/fig 2-18.png"> </p>
 <p align="center"> <b> รูปที่ 2-18 </b> โค้ดการแก้ไขเพื่อสร้าง Linkg ไปยังเว็บไซต์คณะฯ</p>
- 
+
 20. __`S2`__ ทำการ commit และ push ไฟล์ขึ้นไปยัง gitHub
 21. ตรวจสอบผลการทำงานที่ได้ว่าถูกต้องหรือไม่
 การทำงานเป็นทีมโดยการ fork และ pull request
 22. เปิด web browser ไปที่ repo ที่ต้องการ fork จากนั้นกดที่ fork ดังรูปที่ 2-19
 
- 
 <p align="center">  <img src="./images/fig 2-19.png"> </p>
 <p align="center"> <b> รูปที่ 2-19 </b> การ fork repository</p>
 
 23. เมื่อ fork มาได้แล้ว จะพบว่าเราได้ repository ใหม่ในบัญชีของเราเองโดยที่ github จะบอกว่า fork มาจาก repository ใด ดังรูปที่ 2-20
- 
+
 <p align="center">  <img src="./images/fig 2-20.png"> </p>
 <p align="center"> <b> รูปที่ 2-20 </b> ผลลัพธ์การ fork repository</p>
 24. clone repo มาไว้ที่เครื่อง  แก้ไข แล้ว push ตามขั้นตอนปกติ ในที่นี้ ได้เพิ่มไฟล์ชื่อ koson.html ดังรูปที่ 2-21
 
- 
 <p align="center">  <img src="./images/fig 2-21.png"> </p>
 <p align="center"> <b> รูปที่ 2-21 </b> ผลการเพิ่มไฟล์ koson.html</p>
 
 25. หากเราต้องการส่งการเปลี่ยนแปลงใดๆ กลับเข้าไปแก้ยัง repo ที่เรา fork มา (นิยมเรียกว่า repo ต้นน้ำ)  เราต้องขออนุญาตส่งไฟล์เข้าร่วมใน repo นั้น โดยการคลิกที่ ___“New pull request”___ ดังรูปที่ 2-22
 
- 
 <p align="center">  <img src="./images/fig 2-22.png"> </p>
 <p align="center"> <b> รูปที่ 2-22 </b> การขอ Pull request</p>
 
 26. Git จะแสดงหน้าจอเพื่อที่จะให้เราตรวจสอบความถูกต้อง และขอทำ pull request ไปยังเจ้าของ repo ต้นน้ำ ดังรูปที่ 2-23
- 
+
 <p align="center">  <img src="./images/fig 2-23.png"> </p>
 <p align="center"> <b> รูปที่ 2-23 </b> การตรวสอบความถูกต้องของการ pull request</p>
 27. ให้กดปุ่ม Create pull request สีเขียว ดังรูปด้านบน git  จะให้กรอกข้อความบางอย่าง ดังรูปด้านล่าง ให้กรอกข้อความหรือเหตุผลที่ขอทำ pull request ไปยังเจ้าของ repo ดังรูปที่ 2-24
- 
+
 <p align="center">  <img src="./images/fig 2-24.png"> </p>
 <p align="center"> <b> รูปที่ 2-24 </b> การระบุเหตุผลในการทำ pull request</p>
-28. เมื่อเราทำการคลิกที่ปุ่ม pull request แล้ว จะปรากฏหน้าจอสรุปผลการทำ pull request  ดังรูปที่ 2-25 
+28. เมื่อเราทำการคลิกที่ปุ่ม pull request แล้ว จะปรากฏหน้าจอสรุปผลการทำ pull request  ดังรูปที่ 2-25
 
- 
 <p align="center">  <img src="./images/fig 2-25.png"> </p>
 <p align="center"> <b> รูปที่ 2-25 </b> ผลการทำ pull request</p>
 
 29. การทำ pull request เป็นการร้องขอให้เจ้าของ repo ดึงการเปลี่ยนแปลงของเราเข้าไปร่วมใน  master  ซึ่งระบบ github จะมีการส่งข่าวสาร (เช่นอีเมล์) แจ้งเตือนไปยังเจ้าของ repo ดังรูปที่ 2-26
- 
+
 <p align="center">  <img src="./images/fig 2-26.png"> </p>
 <p align="center"> <b> รูปที่ 2-26 </b> การแจ้งเตือนไปยังเจ้าของ repo</p>
 
@@ -214,7 +211,8 @@ c. ผศ.สุระชัย พิมพ์สาลี (surachai-p)
 
 ---
 
-# แบบฝึกหัด
+## แบบฝึกหัด
+
 การสร้างเว็บไซต์ประวัตินักศึกษา ชั้นปีที่ ๒ แขนงวิศวกรรมคอมพิวเตอร์
 1. ให้หัวหน้าห้อง สร้าง repository สำหรับการพัฒนาเว็บไซต์ของชั้นเรียน โดยเริ่มต้น ให้มีเพียงชื่อสถาบันฯ ชื่อคณะ ชื่อภาควิชา ชื่อสาขาวิชา
 2. ให้หัวหน้าห้องเพิ่มทีมดูแล repo เป็นจำนวน 3-4 คน เพื่อช่วยงานด้านต่างๆ  
@@ -225,5 +223,4 @@ c. ผศ.สุระชัย พิมพ์สาลี (surachai-p)
 7. ให้ทีมดูแล repo พิจารณารับการร้องขอ
 8. ให้หัวหน้าชั้นนำส่ง repo สำหรับการพัฒนาเว็บไซต์ของชั้นเรียนบน google classroom
 
-
-## เอกสารอ้างอิง / ศึกษาเพิ่มเติม        
+## เอกสารอ้างอิง / ศึกษาเพิ่มเติม
